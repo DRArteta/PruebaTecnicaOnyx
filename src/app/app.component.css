@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 64px); /* Resta la altura de la barra de navegación */
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    width: 80%;
+  }
+}
