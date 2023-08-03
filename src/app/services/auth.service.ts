@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000/users'; // URL de la API REST
+  authenticatedUser: any;
 
   constructor(private http: HttpClient) {}
 
@@ -13,10 +14,11 @@ export class AuthService {
     return new Promise<boolean>((resolve, reject) => {
       this.http.get<any[]>(this.apiUrl).subscribe(
         (users) => {
-          const authenticatedUser = users.find((user) => user.username === username && user.password === password);
-          if (authenticatedUser) {
+          this.authenticatedUser = users.find((user) => user.username === username && user.password === password);
+          if (this.authenticatedUser) {
             // Usuario autenticado correctamente
             // Puedes guardar el usuario en el almacenamiento local o en una variable de servicio para usarlo en otras partes de la aplicación
+            console.log(this.authenticatedUser);
             console.log('Autenticación exitosa');
             resolve(true);
           } else {
@@ -36,6 +38,10 @@ export class AuthService {
   logout() {
     // Cierra sesión eliminando el usuario del almacenamiento local
     localStorage.removeItem('currentUser');
+  }
+
+  getCurrentUserId(): number {
+    return this.authenticatedUser?.id;
   }
 
   getCurrentUser(): any {

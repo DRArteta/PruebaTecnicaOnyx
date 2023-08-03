@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -13,9 +14,10 @@ export class UserDashboardComponent {
   books: any[] = [];
   userId: number = 1; // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   ngOnInit() {
+    console.log(this.authService.getCurrentUserId());
     this.loadBooks();
   }
 

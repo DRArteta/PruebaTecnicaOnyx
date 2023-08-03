@@ -16,12 +16,14 @@ import { LoginComponent } from './components/login/login.component'; // Importa 
 import { AuthService } from './services/auth.service'; // Importa el servicio de autenticación
 import { FormsModule } from '@angular/forms';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { BookFormComponent } from './components/book-form/book-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserDashboardComponent // Agrega el componente de login a los declarativos
+    UserDashboardComponent,
+    BookFormComponent // Agrega el componente de login a los declarativos
   ],
   imports: [
     BrowserModule,
