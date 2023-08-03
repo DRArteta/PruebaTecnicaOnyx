@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -9,22 +10,22 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  loginError: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   onLogin() {
-    this.authService.login(this.username, this.password).subscribe(
-      (success) => {
-        if (success) {
-          // Si el inicio de sesión es exitoso, redirecciona a la página principal
-          // (Por ahora, simplemente imprimimos un mensaje de éxito en la consola)
-          console.log('Inicio de sesión exitoso.');
-        } else {
-          // Si el inicio de sesión falla, muestra un mensaje de error
-          this.loginError = true;
-        }
+    this.authService.login(this.username, this.password).then((authenticated) => {
+      if (authenticated) {
+        // Autenticación exitosa, redirigir a la página después de iniciar sesión
+        // Ejemplo: this.router.navigate(['/dashboard']);
+        this.router.navigate(['/user-dashboard']);
+        console.log('Autenticación exitosa');
+      } else {
+        // Autenticación fallida, mostrar un mensaje de error o hacer otra acción
+        console.log('Autenticación fallida');
       }
-    );
+    }).catch((error) => {
+      console.error('Error en la autenticación', error);
+    });
   }
 }

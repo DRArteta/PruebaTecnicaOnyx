@@ -1,30 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private usersUrl = 'assets/data/books.json'; // Ruta del archivo JSON
+  private apiUrl = 'http://localhost:3000/users'; // URL de la API REST
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<boolean> {
-    return this.http.get<any>(this.usersUrl).pipe(
-      map(users => {
-        const foundUser = users.users.find((user: any) => user.username === username && user.password === password);
-        if (foundUser) {
-          // Usuario encontrado, inicia sesión
-          localStorage.setItem('currentUser', JSON.stringify(foundUser));
-          return true;
-        } else {
-          // Usuario no encontrado, no puede iniciar sesión
-          return false;
+  login(username: string, password: string): Promise<boolean> {
+    return new Promise<boolean>((resolve, reject) => {
+      this.http.get<any[]>(this.apiUrl).subscribe(
+        (users) => {
+          const authenticatedUser = users.find((user) => user.username === username && user.password === password);
+          if (authenticatedUser) {
+            // Usuario autenticado correctamente
+            // Puedes guardar el usuario en el almacenamiento local o en una variable de servicio para usarlo en otras partes de la aplicación
+            console.log('Autenticación exitosa');
+            resolve(true);
+          } else {
+            // Autenticación fallida
+            console.log('Autenticación fallida');
+            resolve(false);
+          }
+        },
+        (error) => {
+          console.error('Error al cargar los usuarios', error);
+          reject(error);
         }
-      })
-    );
+      );
+    });
   }
 
   logout() {

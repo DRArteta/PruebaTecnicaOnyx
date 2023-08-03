@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'; // Importa el módulo HttpClient
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importar BrowserAnimationsModule
 
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,11 +15,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component'; // Importa el componente de login
 import { AuthService } from './services/auth.service'; // Importa el servicio de autenticación
 import { FormsModule } from '@angular/forms';
+import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent // Agrega el componente de login a los declarativos
+    LoginComponent,
+    UserDashboardComponent // Agrega el componente de login a los declarativos
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthService], // Agrega el servicio de autenticación a los proveedores
   bootstrap: [AppComponent]

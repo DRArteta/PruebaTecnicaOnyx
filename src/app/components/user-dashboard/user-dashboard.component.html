@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Libros Digitalizados</h1>
+
+  <!-- Barra de búsqueda -->
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar libros...">
+
+  <!-- Filtros de búsqueda -->
+  <div class="filters">
+    <label>Filtrar por género:</label>
+    <select [(ngModel)]="selectedGenre">
+      <option value="">Todos</option>
+      <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+    </select>
+  </div>
+
+  <!-- Lista de libros -->
+  <table class="books-table">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <!-- Otros campos de la tabla como género, año, etc. -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of filteredBooks">
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <!-- Otros campos de la tabla -->
+      </tr>
+    </tbody>
+  </table>
+</div>

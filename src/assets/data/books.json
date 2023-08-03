@@ -1,12 +1,26 @@
 {
   "users": [
     {
-      "username": "admin",
-      "password": "admin123"
+      "id": 1,
+      "name": "Luis Ramírez",
+      "username": "luis123",
+      "password": "contraseña123"
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "title": "Libro 1",
+      "author": "Autor 1",
+      "genre": "Novela",
+      "userId": 1
     },
     {
-      "username": "user1",
-      "password": "password1"
+      "id": 2,
+      "title": "Libro 2",
+      "author": "Autor 2",
+      "genre": "Ciencia Ficción",
+      "userId": 2
     }
   ]
 }
