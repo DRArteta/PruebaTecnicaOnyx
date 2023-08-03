@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon'; // Agrega esta línea
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component'; // Importa el componente de login
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [AuthService], // Agrega el servicio de autenticación a los proveedores
   bootstrap: [AppComponent]
