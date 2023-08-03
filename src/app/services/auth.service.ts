@@ -5,41 +5,32 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/users'; // URL de la API REST
-  authenticatedUser: any;
+  authenticatedUser: any; // Variable para almacenar el usuario autenticado
 
   constructor(private http: HttpClient) {}
 
+  // Función para realizar la autenticación
+  // Función para realizar la autenticación
   login(username: string, password: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
-      this.http.get<any[]>(this.apiUrl).subscribe(
-        (users) => {
-          this.authenticatedUser = users.find((user) => user.username === username && user.password === password);
-          if (this.authenticatedUser) {
-            // Usuario autenticado correctamente
-            // Puedes guardar el usuario en el almacenamiento local o en una variable de servicio para usarlo en otras partes de la aplicación
-            console.log(this.authenticatedUser);
-            console.log('Autenticación exitosa');
-            resolve(true);
-          } else {
-            // Autenticación fallida
-            console.log('Autenticación fallida');
-            resolve(false);
-          }
-        },
-        (error) => {
-          console.error('Error al cargar los usuarios', error);
-          reject(error);
-        }
-      );
-    });
+    // Realizar la lógica de autenticación usando el API REST
+    return this.http.get<any>(`http://localhost:3000/users?username=${username}&password=${password}`)
+      .toPromise()
+      .then((response) => {
+        this.authenticatedUser = response[0];
+        return true; // Autenticación exitosa
+      })
+      .catch((error) => {
+        this.authenticatedUser = null;
+        return false; // Autenticación fallida
+      });
   }
 
+  // Función para cerrar sesión
   logout() {
-    // Cierra sesión eliminando el usuario del almacenamiento local
-    localStorage.removeItem('currentUser');
+    this.authenticatedUser = null;
   }
 
+  // Función para obtener el ID del usuario actual
   getCurrentUserId(): number {
     return this.authenticatedUser?.id;
   }
@@ -48,5 +39,11 @@ export class AuthService {
     // Obtiene el usuario actual almacenado en el almacenamiento local
     const currentUser = localStorage.getItem('currentUser');
     return currentUser ? JSON.parse(currentUser) : null;
+  }
+
+  // Función para verificar si el usuario está autenticado
+  isAuthenticated(): boolean {
+    console.log("este es el usuario en la autenticacion ", this.authenticatedUser);
+    return this.authenticatedUser !== undefined;
   }
 }

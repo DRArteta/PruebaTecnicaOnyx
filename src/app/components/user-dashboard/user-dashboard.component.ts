@@ -12,12 +12,13 @@ export class UserDashboardComponent {
   selectedGenre: string = '';
   genres: string[] = ['Novela', 'Ciencia Ficción', 'Drama', 'Romance', 'Fantasía'];
   books: any[] = [];
-  userId: number = 1; // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
+  userId: number; // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.userId = this.authService.getCurrentUserId();
+  }
 
   ngOnInit() {
-    console.log(this.authService.getCurrentUserId());
     this.loadBooks();
   }
 
