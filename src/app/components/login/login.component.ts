@@ -22,8 +22,8 @@ export class LoginComponent {
         this.router.navigateByUrl(returnUrl);
         this.snackbarService.showSnackbar('Inicio de sesión exitoso');
       } else {
-        // Autenticación fallida, mostrar un mensaje de error o hacer otra acción
-        this.snackbarService.showSnackbar('Autenticación fallida');
+        // Autenticación fallida, mostrar un mensaje de error
+        this.snackbarService.showSnackbar('Usuario o contraseña incorrectos');
       }
     }).catch((error) => {
       this.snackbarService.showSnackbar('Error en la autenticación', error);

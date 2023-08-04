@@ -13,14 +13,22 @@ export class AuthService {
   // Función para realizar la autenticación
   login(username: string, password: string): Promise<boolean> {
     // Realizar la lógica de autenticación usando el API REST
-    return this.http.get<any>(`http://localhost:3000/users?username=${username}&password=${password}`)
+    return this.http.get<any[]>(`http://localhost:3000/users?username=${username}&password=${password}`)
       .toPromise()
       .then((response) => {
-        this.authenticatedUser = response[0];
-        return true; // Autenticación exitosa
+        if(response === undefined){
+          return false;
+        }
+        if (response.length > 0) {
+          this.authenticatedUser = response[0];
+          return true; // Autenticación exitosa
+        } else {
+          this.authenticatedUser = undefined;
+          return false; // Autenticación fallida
+        }
       })
       .catch((error) => {
-        this.authenticatedUser = null;
+        this.authenticatedUser = undefined;
         return false; // Autenticación fallida
       });
   }

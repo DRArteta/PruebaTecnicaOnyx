@@ -2,7 +2,7 @@
   "users": [
     {
       "name": "David Ricardo",
-      "username": "david12345",
+      "username": "david1234",
       "password": "contraseña123",
       "id": 1
     },
@@ -15,7 +15,6 @@
   ],
   "books": [
     {
-      "id": 1,
       "title": "El Alquimista",
       "author": "Paulo Coelho",
       "genre": "Novela",
@@ -24,14 +23,15 @@
       "synopsis": "La historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hasta el desierto egipcio en busca de un tesoro escondido.",
       "pages": 208,
       "language": "Español",
-      "availability": "Disponible en papel y ebook",
+      "availability": "Epub",
       "keywords": [
         "Aventura",
         "Autoayuda",
         "Espiritualidad"
       ],
       "url": "https://www.santillana.com.co/el-alquimista.html",
-      "userId": 1
+      "userId": 1,
+      "id": 1
     },
     {
       "id": 2,
@@ -261,21 +261,6 @@
       "userId": 2
     },
     {
-      "title": "1",
-      "author": "1",
-      "genre": "1",
-      "editorial": "1",
-      "year": 1880,
-      "synopsis": "a2",
-      "pages": 1,
-      "language": "1",
-      "availability": "1",
-      "keywords": "1",
-      "url": "http://www.google.com",
-      "userId": 1,
-      "id": 13
-    },
-    {
       "title": "3",
       "author": "4",
       "genre": "Drama",
@@ -289,6 +274,21 @@
       "url": "http://goooogle.com",
       "userId": 1,
       "id": 14
+    },
+    {
+      "title": "2",
+      "author": "2",
+      "genre": "Ciencia Ficción",
+      "editorial": "3",
+      "year": 1880,
+      "synopsis": "4",
+      "pages": 5,
+      "language": "6",
+      "availability": "Papper",
+      "keywords": "2",
+      "url": "http://google.com",
+      "userId": 1,
+      "id": 15
     }
   ]
 }
