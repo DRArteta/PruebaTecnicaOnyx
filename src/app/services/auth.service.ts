@@ -43,7 +43,6 @@ export class AuthService {
 
   // Función para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
-    console.log("este es el usuario en la autenticacion ", this.authenticatedUser);
     return this.authenticatedUser !== undefined;
   }
 }

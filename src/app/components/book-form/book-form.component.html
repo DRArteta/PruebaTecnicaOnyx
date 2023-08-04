@@ -1,23 +1,84 @@
 <div class="container">
   <h2>{{ isNewBook ? 'Agregar Nuevo Libro' : 'Editar Libro' }}</h2>
 
-  <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+  <form (ngSubmit)="onSubmit()" [formGroup]="bookForm">
     <div class="form-group">
-      <label for="title">Título</label>
-      <input type="text" id="title" name="title" [(ngModel)]="book.title" required>
+      <mat-form-field appearance="fill">
+        <mat-label>Título</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
     </div>
 
     <div class="form-group">
-      <label for="author">Autor</label>
-      <input type="text" id="author" name="author" [(ngModel)]="book.author" required>
+      <mat-form-field appearance="fill">
+        <mat-label>Autor</mat-label>
+        <input matInput formControlName="author" required>
+      </mat-form-field>
     </div>
 
     <div class="form-group">
-      <label for="genre">Género</label>
-      <input type="text" id="genre" name="genre" [(ngModel)]="book.genre" required>
+      <mat-form-field appearance="fill">
+        <mat-label>Género</mat-label>
+        <input matInput formControlName="genre" required>
+      </mat-form-field>
     </div>
 
-    <!-- Agrega otros campos del libro según tus necesidades -->
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Editorial</mat-label>
+        <input matInput formControlName="editorial">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Año de Publicación</mat-label>
+        <input matInput type="number" formControlName="year" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Sinopsis</mat-label>
+        <textarea matInput formControlName="synopsis"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Número de Páginas</mat-label>
+        <input matInput type="number" formControlName="pages" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Idioma</mat-label>
+        <input matInput formControlName="language" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Disponibilidad</mat-label>
+        <input matInput formControlName="availability">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Palabras Clave</mat-label>
+        <input matInput formControlName="keywords">
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>URL</mat-label>
+        <input matInput formControlName="url" pattern="https?://.+">
+        <mat-hint>Debe ser una URL válida</mat-hint>
+      </mat-form-field>
+    </div>
 
     <button type="submit">{{ isNewBook ? 'Guardar' : 'Actualizar' }}</button>
   </form>

@@ -15,6 +15,7 @@ h1 {
 }
 
 .books-table {
+  display: table;
   margin-top: 20px;
   width: 100%;
   border-collapse: collapse;

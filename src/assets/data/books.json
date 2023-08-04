@@ -5,22 +5,67 @@
       "name": "Luis Ramírez",
       "username": "luis123",
       "password": "contraseña123"
+    },
+    {
+      "id": 2,
+      "name": "María Pérez",
+      "username": "maria456",
+      "password": "contraseña456"
     }
   ],
   "books": [
     {
       "id": 1,
-      "title": "Libro 1",
-      "author": "Autor 1",
+      "title": "El Alquimista",
+      "author": "Paulo Coelho",
       "genre": "Novela",
+      "editorial": "Santillana",
+      "year": 1988,
+      "synopsis": "La historia de Santiago, un joven pastor andaluz que viaja desde su tierra natal hasta el desierto egipcio en busca de un tesoro escondido.",
+      "pages": 208,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Aventura",
+        "Autoayuda",
+        "Espiritualidad"
+      ],
+      "url": "https://www.santillana.com.co/el-alquimista.html",
       "userId": 1
     },
     {
       "id": 2,
-      "title": "Libro 2",
-      "author": "Autor 2",
+      "title": "Fahrenheit 451",
+      "author": "Ray Bradbury",
       "genre": "Ciencia Ficción",
+      "editorial": "Minotauro",
+      "year": 1953,
+      "synopsis": "En un futuro distópico, un bombero cuyo trabajo es quemar libros proscritos por el gobierno comienza a cuestionar la supresión de la información y el conocimiento.",
+      "pages": 256,
+      "language": "Inglés",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Distopía",
+        "Censura",
+        "Libertad"
+      ],
+      "url": "https://www.planetadelibros.com.co/libro-fahrenheit-451/1409",
       "userId": 2
+    },
+    {
+      "title": "1",
+      "author": "1",
+      "genre": "1",
+      "editorial": "1",
+      "year": 2022,
+      "synopsis": "1",
+      "pages": 1,
+      "language": "1",
+      "availability": "1",
+      "keywords": "1",
+      "url": "http://www.google.com",
+      "userId": 1,
+      "id": 3
     }
   ]
 }

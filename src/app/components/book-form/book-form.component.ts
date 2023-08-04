@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../services/book.service';
 
@@ -8,67 +9,94 @@ import { BookService } from '../../services/book.service';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnInit {
+  bookForm: FormGroup;
   isNewBook: boolean = true;
-  book: any = {};
 
   constructor(
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private bookService: BookService
-  ) {}
-
-  ngOnInit() {
-    // Obtener el ID del libro de los parámetros de la URL
-    this.route.params.subscribe(params => {
-      const bookId = params['id'];
-
-      if (bookId) {
-        // Si hay un ID, es una edición de libro existente
-        this.isNewBook = false;
-        this.loadBook(bookId);
-      }
+  ) {
+    this.bookForm = this.fb.group({
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      genre: ['', Validators.required],
+      editorial: [''],
+      year: ['', [Validators.required, Validators.min(1800), Validators.max(new Date().getFullYear())]],
+      synopsis: [''],
+      pages: ['', [Validators.required, Validators.min(1)]],
+      language: ['', Validators.required],
+      availability: [''],
+      keywords: [''],
+      url: ['', Validators.pattern('https?://.+')],
+      userId: [1] // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
     });
   }
 
-  loadBook(bookId: number) {
-    // Cargar el libro existente para editar
-    //const userId = this.getCurrentUserId(); // Implementa esta función para obtener el ID del usuario actual
-    this.bookService.getBookByUser(1, bookId).subscribe(
-      (data) => {
-        this.book = data;
-      },
-      (error) => {
-        console.error('Error al cargar el libro', error);
-      }
-    );
+  ngOnInit() {
+    const bookId: number | null = this.route.snapshot.paramMap.get('id')
+      ? Number(this.route.snapshot.paramMap.get('id'))
+      : null;
+
+    if (bookId) {
+      this.isNewBook = false;
+      this.bookService.getBookByUser(1, bookId).subscribe(
+        (book) => {
+          this.bookForm.setValue({
+            title: book.title,
+            author: book.author,
+            genre: book.genre,
+            editorial: book.editorial,
+            year: book.year,
+            synopsis: book.synopsis,
+            pages: book.pages,
+            language: book.language,
+            availability: book.availability,
+            keywords: book.keywords.join(', '), // Convertimos el array de palabras clave en una cadena separada por comas
+            url: book.url,
+            userId: 1 // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
+          });
+        },
+        (error) => {
+          console.error('Error al cargar el libro', error);
+        }
+      );
+    }
   }
 
   onSubmit() {
-    //const userId = this.getCurrentUserId(); // Implementa esta función para obtener el ID del usuario actual
+    if (this.bookForm.valid) {
+      const userId = 1; // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
+      if (this.isNewBook) {
+        this.bookService.addBook(userId, this.bookForm.value).subscribe(
+          () => {
+            // Redirigir al dashboard o a otra página
+            this.router.navigate(['/user-dashboard']);
+          },
+          (error) => {
+            console.error('Error al agregar el libro', error);
+          }
+        );
+      } else {
+        const bookId: number = this.route.snapshot.paramMap.get('id')
+          ? Number(this.route.snapshot.paramMap.get('id'))
+          : 0;
 
-    if (this.isNewBook) {
-      // Es un nuevo libro, guardar
-      this.bookService.addBook(1, this.book).subscribe(
-        () => {
-          console.log('Libro agregado exitosamente');
-          this.router.navigate(['/user-dashboard']);
-        },
-        (error) => {
-          console.error('Error al agregar el libro', error);
+        if (bookId) {
+          this.bookService
+            .updateBook(userId, bookId, this.bookForm.value)
+            .subscribe(
+              () => {
+                // Redirigir al dashboard o a otra página
+                this.router.navigate(['/user-dashboard']);
+              },
+              (error) => {
+                console.error('Error al actualizar el libro', error);
+              }
+            );
         }
-      );
-    } else {
-      // Es una edición, actualizar
-      const bookId = this.book.id; // Suponemos que el ID del libro ya está en el objeto this.book
-      this.bookService.updateBook(1, bookId, this.book).subscribe(
-        () => {
-          console.log('Libro actualizado exitosamente');
-          this.router.navigate(['/user-dashboard']);
-        },
-        (error) => {
-          console.error('Error al actualizar el libro', error);
-        }
-      );
+      }
     }
   }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PruebaOnyx';
+  constructor(public authService: AuthService, private router: Router) {}
+
+  goToDashboard() {
+    this.router.navigate(['/user-dashboard']);
+  }
+
+  goToAddBookForm() {
+    this.router.navigate(['/book-form']);
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

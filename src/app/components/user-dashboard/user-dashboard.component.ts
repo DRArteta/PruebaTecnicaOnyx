@@ -14,6 +14,12 @@ export class UserDashboardComponent {
   books: any[] = [];
   userId: number; // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
 
+  displayedColumns: string[] = ['title', 'author', 'actions'];
+
+  // Define la columna de acciones con el matColumnDef "actions"
+  actionsColumn: string[] = ['actions'];
+  dataSource!: any[];
+
   constructor(private http: HttpClient, private authService: AuthService) {
     this.userId = this.authService.getCurrentUserId();
   }
@@ -25,7 +31,7 @@ export class UserDashboardComponent {
   loadBooks() {
     this.http.get<any[]>('http://localhost:3000/books?userId=' + this.userId).subscribe(
       (data) => {
-        this.books = data;
+        this.books, this.dataSource = data;
       },
       (error) => {
         console.error('Error al cargar los libros', error);

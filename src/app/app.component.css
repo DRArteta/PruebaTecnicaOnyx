@@ -1,28 +1,31 @@
-.toolbar {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
+/* Estilos para el mat-toolbar */
+.mat-toolbar {
+  background-color: #1976d2; /* Azul claro */
+  color: #fff; /* Texto en blanco */
 }
 
-.custom-button {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/* Estilos para el mat-sidenav */
+.mat-sidenav {
+  background-color: #4caf50; /* Verde */
+  color: #fff; /* Texto en blanco */
 }
 
-.button-text {
-  margin-right: 8px;
+/* Estilos para el fondo de la app */
+body {
+  background-color: #f5f5f5; /* Gris claro */
 }
 
-.button-icon {
-  margin-left: 4px;
+
+.full-height-container {
+  height: 100vh;
 }
 
-/* Estilo global para toda la aplicación */
-:host {
+.menu-button {
   display: block;
-  background-color: #f0f0f0; /* Gris claro (#f0f0f0) o cualquier otro color gris que prefieras */
+  text-align: left;
+  width: 100%;
+}
+
+.logout-button {
+  margin-top: auto;
 }

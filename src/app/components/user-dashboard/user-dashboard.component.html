@@ -13,21 +13,35 @@
     </select>
   </div>
 
-  <!-- Lista de libros -->
-  <table class="books-table">
-    <thead>
-      <tr>
-        <th>Título</th>
-        <th>Autor</th>
-        <!-- Otros campos de la tabla como género, año, etc. -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let book of filteredBooks">
-        <td>{{ book.title }}</td>
-        <td>{{ book.author }}</td>
-        <!-- Otros campos de la tabla -->
-      </tr>
-    </tbody>
-  </table>
+  <!-- Lista de libros (utilizando MatTable) -->
+  <mat-table [dataSource]="dataSource" class="books-table">
+
+    <!-- Columna de Título -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Título</th>
+      <td mat-cell *matCellDef="let book">{{ book.title }}</td>
+    </ng-container>
+
+    <!-- Columna de Autor -->
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef>Autor</th>
+      <td mat-cell *matCellDef="let book">{{ book.author }}</td>
+    </ng-container>
+
+    <!-- Columna de Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let book">
+        <!-- Agrega aquí los botones de acciones con los iconos y las funciones correspondientes -->
+      </td>
+    </ng-container>
+
+    <!-- Definición de las columnas en la tabla -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </mat-table>
+
+  <!-- Paginador -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+
 </div>
