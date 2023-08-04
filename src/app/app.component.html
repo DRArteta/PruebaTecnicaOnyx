@@ -16,10 +16,16 @@
           <mat-icon>add_circle</mat-icon>
         </button>
 
+        <!-- Botón "Perfil" -->
+        <button mat-icon-button (click)="userProfile()" matTooltip="Perfil">
+          <mat-icon>person</mat-icon>
+        </button>
+
         <!-- Botón "Salir Sesión" -->
         <button mat-icon-button (click)="logout()" matTooltip="Salir">
           <mat-icon>logout</mat-icon>
         </button>
+
       </mat-toolbar>
 
       <!-- Contenido principal de la aplicación -->

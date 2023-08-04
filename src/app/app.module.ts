@@ -28,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InfoComponent } from './components/dialogs/info/info.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete
     UserDashboardComponent,
     BookFormComponent,
     InfoComponent,
-    DeleteDialogComponent // Agrega el componente de login a los declarativos
+    DeleteDialogComponent,
+    UserProfileComponent // Agrega el componente de login a los declarativos
   ],
   imports: [
     BrowserModule,

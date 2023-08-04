@@ -12,7 +12,7 @@ import { BookService } from '../../services/book.service';
 })
 export class BookFormComponent implements OnInit {
   bookForm: FormGroup;
-  bookId: number;
+  bookId = 0;
   isNewBook: boolean = true;
 
   constructor(
@@ -43,7 +43,8 @@ export class BookFormComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.bookId = params['bookId'];
-      if (this.bookId !== 0) {
+      console.log(this.bookId);
+      if (this.bookId !== undefined) {
         this.bookService.getBookByUser(this.authService.getCurrentUserId(), this.bookId).subscribe((result)=>{
           this.bookForm.setValue({
             title: result.title,

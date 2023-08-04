@@ -38,12 +38,16 @@ export class AuthService {
 
   getCurrentUser(): any {
     // Obtiene el usuario actual almacenado en el almacenamiento local
-    const currentUser = localStorage.getItem('currentUser');
-    return currentUser ? JSON.parse(currentUser) : null;
+    return this.authenticatedUser;
   }
 
   // Función para verificar si el usuario está autenticado
   isAuthenticated(): boolean {
     return this.authenticatedUser !== undefined;
+  }
+
+  updateUser(user: any) {
+    // Lógica para realizar la actualización utilizando el API REST
+    return this.http.put<any>(`http://localhost:3000/users/${user.id}`, user);
   }
 }
