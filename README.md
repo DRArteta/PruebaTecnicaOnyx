@@ -38,7 +38,7 @@ Esto iniciará el servidor de desarrollo en `http://localhost:4200/`. La aplicac
 
 A continuación, se describen las principales funcionalidades de la aplicación:
 
-- **Autenticación**: La aplicación cuenta con un sistema de autenticación que permite a los usuarios registrarse e iniciar sesión. Para registrarse, se debe proporcionar un nombre de usuario y una contraseña válida. Una vez autenticado, el usuario puede acceder a las funcionalidades protegidas de la aplicación.
+- **Autenticación**: La aplicación cuenta con un sistema de autenticación que permite a los usuarios registrarse e iniciar sesión. Para registrarse, se debe proporcionar un nombre de usuario y una contraseña válida. Una vez autenticado, el usuario puede acceder a las funcionalidades protegidas de la aplicación. En este caso puede probarlo con: "username": "david1234", "password": "contraseña123".
 
 - **Vista de Libros**: Una vez autenticado, el usuario puede ver una lista de libros disponibles. La lista muestra el título, autor y género de cada libro. El usuario puede buscar libros por título o autor utilizando la barra de búsqueda y filtrar libros por género utilizando el menú desplegable de filtros.
 
