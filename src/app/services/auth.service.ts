@@ -48,6 +48,7 @@ export class AuthService {
 
   updateUser(user: any) {
     // Lógica para realizar la actualización utilizando el API REST
+    console.log(user);
     return this.http.put<any>(`http://localhost:3000/users/${user.id}`, user);
   }
 }
