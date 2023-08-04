@@ -1,40 +1,30 @@
 <ng-container *ngIf="authService.isAuthenticated(); else loginTemplate">
-  <mat-sidenav-container>
-    <!-- Menú lateral -->
-    <mat-sidenav #sidenav mode="side" opened="false">
-      <!-- Contenido del menú -->
-      <mat-nav-list>
+      <!-- Barra de navegación -->
+      <mat-toolbar color="primary">
+        <!-- Título de la barra de navegación -->
+        <span>Nombre de la Aplicación</span>
+
+        <span class="example-spacer"></span>
+
         <!-- Botón "Home" -->
-        <button mat-icon-button (click)="goToDashboard()">
+        <button mat-icon-button (click)="goToDashboard()" matTooltip="Inicio">
           <mat-icon>home</mat-icon>
         </button>
 
         <!-- Botón "Añadir" -->
-        <button mat-icon-button (click)="goToAddBookForm()">
+        <button mat-icon-button (click)="goToAddBookForm()" matTooltip="Añadir libro">
           <mat-icon>add_circle</mat-icon>
         </button>
 
         <!-- Botón "Salir Sesión" -->
-        <button mat-button (click)="logout()">Salir Sesión</button>
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <!-- Barra de navegación -->
-      <mat-toolbar color="primary">
-        <!-- Botón de menú -->
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon>menu</mat-icon>
+        <button mat-icon-button (click)="logout()" matTooltip="Salir">
+          <mat-icon>logout</mat-icon>
         </button>
-
-        <!-- Título de la barra de navegación -->
-        <span>Nombre de la Aplicación</span>
       </mat-toolbar>
 
       <!-- Contenido principal de la aplicación -->
       <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
 </ng-container>
 
 <ng-template #loginTemplate>

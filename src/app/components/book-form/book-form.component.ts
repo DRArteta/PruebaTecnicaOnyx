@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { SnackbarService } from 'src/app/services/snackbar.service';
 import { BookService } from '../../services/book.service';
 
 @Component({
@@ -10,14 +12,18 @@ import { BookService } from '../../services/book.service';
 })
 export class BookFormComponent implements OnInit {
   bookForm: FormGroup;
+  bookId: number;
   isNewBook: boolean = true;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private bookService: BookService
+    private bookService: BookService,
+    private authService: AuthService,
+    private snackbarService: SnackbarService
   ) {
+    this.bookId = 0;
     this.bookForm = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
@@ -30,11 +36,38 @@ export class BookFormComponent implements OnInit {
       availability: [''],
       keywords: [''],
       url: ['', Validators.pattern('https?://.+')],
-      userId: [1] // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
+      userId: [this.authService.getCurrentUserId()] // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
     });
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.bookId = params['bookId'];
+      if (this.bookId !== 0) {
+        this.bookService.getBookByUser(this.authService.getCurrentUserId(), this.bookId).subscribe((result)=>{
+          this.bookForm.setValue({
+            title: result.title,
+            author: result.author,
+            genre: result.genre,
+            editorial: result.editorial,
+            year: result.year,
+            synopsis: result.synopsis,
+            pages: result.pages,
+            language: result.language,
+            availability: result.availability,
+            keywords: result.keywords, // Convertimos el array de palabras clave en una cadena separada por comas
+            url: result.url,
+            userId: this.authService.getCurrentUserId() // Supongamos que aquí tienes el ID del usuario después de iniciar sesión
+          });
+        },
+        (error) => {
+          this.snackbarService.showSnackbar("Error en la carga del libro: ", error);
+        });
+        this.isNewBook = false; // Es una edición
+      } else {
+        this.isNewBook = true; // Es un nuevo libro
+      }
+    });
     const bookId: number | null = this.route.snapshot.paramMap.get('id')
       ? Number(this.route.snapshot.paramMap.get('id'))
       : null;
@@ -59,7 +92,7 @@ export class BookFormComponent implements OnInit {
           });
         },
         (error) => {
-          console.error('Error al cargar el libro', error);
+          this.snackbarService.showSnackbar('Error al cargar el libro', error);
         }
       );
     }
@@ -73,9 +106,10 @@ export class BookFormComponent implements OnInit {
           () => {
             // Redirigir al dashboard o a otra página
             this.router.navigate(['/user-dashboard']);
+            this.snackbarService.showSnackbar('Libro agregado correctamente');
           },
           (error) => {
-            console.error('Error al agregar el libro', error);
+            this.snackbarService.showSnackbar('Error al agregar el libro', error);
           }
         );
       } else {
@@ -83,16 +117,17 @@ export class BookFormComponent implements OnInit {
           ? Number(this.route.snapshot.paramMap.get('id'))
           : 0;
 
-        if (bookId) {
+        if (this.bookId !== 0) {
           this.bookService
-            .updateBook(userId, bookId, this.bookForm.value)
+            .updateBook(this.authService.getCurrentUserId(), this.bookId, this.bookForm.value)
             .subscribe(
               () => {
                 // Redirigir al dashboard o a otra página
                 this.router.navigate(['/user-dashboard']);
+                this.snackbarService.showSnackbar('Libro actualizado correctamente');
               },
               (error) => {
-                console.error('Error al actualizar el libro', error);
+                this.snackbarService.showSnackbar('Error al actualizar el libro', error);
               }
             );
         }

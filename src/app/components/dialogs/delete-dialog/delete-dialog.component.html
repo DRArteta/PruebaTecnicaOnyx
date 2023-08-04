@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Eliminar Libro</h2>
+<mat-dialog-content>
+  ¿Estás seguro de que deseas eliminar el libro "{{ data?.book?.title }}"?
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Eliminar</button>
+</mat-dialog-actions>

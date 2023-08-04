@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean | UrlTree {
     // Verificar si el usuario está autenticado
     if (this.authService.isAuthenticated()) {
-      console.log(this.authService.isAuthenticated());
       return true; // Permitir acceso a la ruta
     } else {
       // Redirigir al login y guardar la URL actual para redirigir al dashboard después del login

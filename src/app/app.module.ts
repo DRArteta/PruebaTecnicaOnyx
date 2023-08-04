@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'; // Agrega esta línea
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component'; // Importa el componente de login
@@ -24,13 +25,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatOptionModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InfoComponent } from './components/dialogs/info/info.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     UserDashboardComponent,
-    BookFormComponent // Agrega el componente de login a los declarativos
+    BookFormComponent,
+    InfoComponent,
+    DeleteDialogComponent // Agrega el componente de login a los declarativos
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatOptionModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatTooltipModule
   ],
   providers: [AuthService], // Agrega el servicio de autenticación a los proveedores
   bootstrap: [AppComponent]

@@ -35,6 +35,213 @@
     },
     {
       "id": 2,
+      "title": "Cien años de soledad",
+      "author": "Gabriel García Márquez",
+      "genre": "Novela",
+      "editorial": "Diana",
+      "year": 1967,
+      "synopsis": "La historia de la familia Buendía en el pueblo de Macondo, a lo largo de varias generaciones.",
+      "pages": 432,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Realismo mágico",
+        "Literatura Latinoamericana"
+      ],
+      "url": "https://www.diana.com.co/cien-anos-de-soledad.html",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "title": "Harry Potter y la piedra filosofal",
+      "author": "J.K. Rowling",
+      "genre": "Fantasía",
+      "editorial": "Salamandra",
+      "year": 1997,
+      "synopsis": "La historia del joven mago Harry Potter y su entrada al mundo de la magia en la escuela Hogwarts.",
+      "pages": 256,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Magia",
+        "Aventura",
+        "Amistad"
+      ],
+      "url": "https://www.salamandra.com/harry-potter-y-la-piedra-filosofal.html",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Ciencia Ficción",
+      "editorial": "Debolsillo",
+      "year": 1949,
+      "synopsis": "La historia de Winston Smith en un estado totalitario donde el Gran Hermano todo lo vigila.",
+      "pages": 416,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Distopía",
+        "Totalitarismo",
+        "Sociedad"
+      ],
+      "url": "https://www.debolsillo.com/1984.html",
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "title": "El principito",
+      "author": "Antoine de Saint-Exupéry",
+      "genre": "Fábula",
+      "editorial": "Gallimard",
+      "year": 1943,
+      "synopsis": "La historia del encuentro entre un aviador y un pequeño príncipe de otro planeta.",
+      "pages": 96,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Infantil",
+        "Filosofía",
+        "Aventura"
+      ],
+      "url": "https://www.gallimard.fr/el-principito.html",
+      "userId": 1
+    },
+    {
+      "id": 6,
+      "title": "Orgullo y prejuicio",
+      "author": "Jane Austen",
+      "genre": "Novela Romántica",
+      "editorial": "Alianza Editorial",
+      "year": 1813,
+      "synopsis": "La historia de Elizabeth Bennet y su relación con el apuesto Mr. Darcy.",
+      "pages": 464,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Romance",
+        "Sociedad",
+        "Inglaterra"
+      ],
+      "url": "https://www.alianzaeditorial.es/orgullo-y-prejuicio.html",
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "title": "Los juegos del hambre",
+      "author": "Suzanne Collins",
+      "genre": "Ciencia Ficción",
+      "editorial": "Molino",
+      "year": 2008,
+      "synopsis": "La historia de Katniss Everdeen en los Juegos del Hambre, una competencia mortal organizada por el Capitolio.",
+      "pages": 400,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Distopía",
+        "Sobrevivencia",
+        "Revolución"
+      ],
+      "url": "https://www.molino.es/los-juegos-del-hambre.html",
+      "userId": 1
+    },
+    {
+      "id": 8,
+      "title": "Matar a un ruiseñor",
+      "author": "Harper Lee",
+      "genre": "Novela",
+      "editorial": "Vintage Español",
+      "year": 1960,
+      "synopsis": "La historia de Scout Finch y su hermano Jem mientras crecen en el Sur de Estados Unidos durante la Gran Depresión.",
+      "pages": 464,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Drama",
+        "Racismo",
+        "Valores"
+      ],
+      "url": "https://www.vintage-espanol.es/matar-a-un-ruiseñor.html",
+      "userId": 1
+    },
+    {
+      "id": 9,
+      "title": "El señor de los anillos: La comunidad del anillo",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasía",
+      "editorial": "Minotauro",
+      "year": 1954,
+      "synopsis": "La historia de Frodo Bolsón y su misión para destruir el Anillo Único.",
+      "pages": 416,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Fantasía épica",
+        "Aventura",
+        "Amistad"
+      ],
+      "url": "https://www.minotauro.com/el-senor-de-los-anillos-la-comunidad-del-anillo.html",
+      "userId": 1
+    },
+    {
+      "id": 10,
+      "title": "Crónica de una muerte anunciada",
+      "author": "Gabriel García Márquez",
+      "genre": "Novela",
+      "editorial": "Editorial Oveja Negra",
+      "year": 1981,
+      "synopsis": "La historia de Santiago Nasar y su trágico destino en un pequeño pueblo caribeño.",
+      "pages": 120,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Realismo mágico",
+        "Misterio",
+        "Destino"
+      ],
+      "url": "https://www.editorialovejanegra.com/cronica-de-una-muerte-anunciada.html",
+      "userId": 1
+    },{
+      "id": 11,
+      "title": "El señor de los anillos: La comunidad del anillo",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasía",
+      "editorial": "Minotauro",
+      "year": 1954,
+      "synopsis": "La historia de Frodo Bolsón y su misión para destruir el Anillo Único.",
+      "pages": 416,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Fantasía épica",
+        "Aventura",
+        "Amistad"
+      ],
+      "url": "https://www.minotauro.com/el-senor-de-los-anillos-la-comunidad-del-anillo.html",
+      "userId": 1
+    },
+    {
+      "id": 12,
+      "title": "Crónica de una muerte anunciada",
+      "author": "Gabriel García Márquez",
+      "genre": "Novela",
+      "editorial": "Editorial Oveja Negra",
+      "year": 1981,
+      "synopsis": "La historia de Santiago Nasar y su trágico destino en un pequeño pueblo caribeño.",
+      "pages": 120,
+      "language": "Español",
+      "availability": "Disponible en papel y ebook",
+      "keywords": [
+        "Realismo mágico",
+        "Misterio",
+        "Destino"
+      ],
+      "url": "https://www.editorialovejanegra.com/cronica-de-una-muerte-anunciada.html",
+      "userId": 1
+    },
+    {
+      "id": 2,
       "title": "Fahrenheit 451",
       "author": "Ray Bradbury",
       "genre": "Ciencia Ficción",
@@ -51,21 +258,6 @@
       ],
       "url": "https://www.planetadelibros.com.co/libro-fahrenheit-451/1409",
       "userId": 2
-    },
-    {
-      "title": "1",
-      "author": "1",
-      "genre": "1",
-      "editorial": "1",
-      "year": 2022,
-      "synopsis": "1",
-      "pages": 1,
-      "language": "1",
-      "availability": "1",
-      "keywords": "1",
-      "url": "http://www.google.com",
-      "userId": 1,
-      "id": 3
     }
   ]
 }

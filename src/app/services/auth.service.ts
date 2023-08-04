@@ -27,7 +27,8 @@ export class AuthService {
 
   // Función para cerrar sesión
   logout() {
-    this.authenticatedUser = null;
+    this.authenticatedUser = undefined;
+    localStorage.removeItem('currentUser');
   }
 
   // Función para obtener el ID del usuario actual

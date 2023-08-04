@@ -23,10 +23,10 @@ export class LoginComponent {
         this.snackbarService.showSnackbar('Inicio de sesión exitoso');
       } else {
         // Autenticación fallida, mostrar un mensaje de error o hacer otra acción
-        console.log('Autenticación fallida');
+        this.snackbarService.showSnackbar('Autenticación fallida');
       }
     }).catch((error) => {
-      console.error('Error en la autenticación', error);
+      this.snackbarService.showSnackbar('Error en la autenticación', error);
     });
   }
 }
