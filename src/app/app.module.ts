@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http'; // Importa el módulo H
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Importar BrowserAnimationsModule
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
+
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,6 +31,9 @@ import { InfoComponent } from './components/dialogs/info/info.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeleteDialogComponent } from './components/dialogs/delete-dialog/delete-dialog.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSortModule } from '@angular/material/sort';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,11 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MatFormFieldModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule,
+    MatSortModule,
+    MatGridListModule,
+    FlexLayoutModule
   ],
   providers: [AuthService], // Agrega el servicio de autenticación a los proveedores
   bootstrap: [AppComponent]

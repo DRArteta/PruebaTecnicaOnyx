@@ -14,5 +14,6 @@ export class InfoComponent {
   }
   ngOnInit(): void {
     this.book = this.bookIn;
+    console.log(this.book);
   }
 }

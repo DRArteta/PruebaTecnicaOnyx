@@ -14,6 +14,7 @@ export class BookFormComponent implements OnInit {
   bookForm: FormGroup;
   bookId = 0;
   isNewBook: boolean = true;
+  genres: string[] = ['Novela', 'Ciencia Ficción', 'Drama', 'Romance', 'Fantasía'];
 
   constructor(
     private fb: FormBuilder,

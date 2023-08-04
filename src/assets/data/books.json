@@ -259,6 +259,36 @@
       ],
       "url": "https://www.planetadelibros.com.co/libro-fahrenheit-451/1409",
       "userId": 2
+    },
+    {
+      "title": "1",
+      "author": "1",
+      "genre": "1",
+      "editorial": "1",
+      "year": 1880,
+      "synopsis": "a2",
+      "pages": 1,
+      "language": "1",
+      "availability": "1",
+      "keywords": "1",
+      "url": "http://www.google.com",
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "title": "3",
+      "author": "4",
+      "genre": "Drama",
+      "editorial": "1",
+      "year": 1900,
+      "synopsis": "ef",
+      "pages": 2,
+      "language": "32",
+      "availability": "Si",
+      "keywords": "1112630610",
+      "url": "http://goooogle.com",
+      "userId": 1,
+      "id": 14
     }
   ]
 }

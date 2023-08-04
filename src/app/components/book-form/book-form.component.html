@@ -1,85 +1,98 @@
-<div class="container">
+<!-- app.component.html -->
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
   <h2>{{ isNewBook ? 'Agregar Nuevo Libro' : 'Editar Libro' }}</h2>
 
-  <form (ngSubmit)="onSubmit()" [formGroup]="bookForm">
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Título</mat-label>
-        <input matInput formControlName="title" required>
-      </mat-form-field>
+  <form (ngSubmit)="onSubmit()" [formGroup]="bookForm" fxLayout="column" fxLayoutGap="20px">
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex="30%">
+        <mat-form-field appearance="fill">
+          <mat-label>Título</mat-label>
+          <input matInput formControlName="title" required>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="30%">
+        <mat-form-field appearance="fill">
+          <mat-label>Autor</mat-label>
+          <input matInput formControlName="author" required>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <!-- Utilizamos mat-select para el campo de género -->
+        <mat-form-field appearance="fill">
+          <mat-label>Género</mat-label>
+          <mat-select formControlName="genre" required>
+            <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Autor</mat-label>
-        <input matInput formControlName="author" required>
-      </mat-form-field>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex="50%">
+        <mat-form-field appearance="fill">
+          <mat-label>Editorial</mat-label>
+          <input matInput formControlName="editorial">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field appearance="fill">
+          <mat-label>Año de Publicación</mat-label>
+          <input matInput type="number" formControlName="year" required matTooltip="Ingrese desde el 1800 en adelante">
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Género</mat-label>
-        <input matInput formControlName="genre" required>
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sinopsis</mat-label>
+      <textarea matInput formControlName="synopsis"></textarea>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex="50%">
+        <mat-form-field appearance="fill">
+          <mat-label>Número de Páginas</mat-label>
+          <input matInput type="number" formControlName="pages" required>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50%">
+        <mat-form-field appearance="fill">
+          <mat-label>Idioma</mat-label>
+          <input matInput formControlName="language" required>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Editorial</mat-label>
-        <input matInput formControlName="editorial">
-      </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Disponibilidad</mat-label>
+      <mat-select formControlName="availability">
+        <mat-option value="Papper">Disponible en papel</mat-option>
+        <mat-option value="Epub">Disponible en epub</mat-option>
+        <mat-option value="Papper">Disponible en papel y epub</mat-option>
+        <mat-option value="Epub">No disponible</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Palabras Clave</mat-label>
+      <input matInput formControlName="keywords">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url" pattern="https?://.+">
+      <mat-hint>Debe ser una URL válida</mat-hint>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <div fxFlex="50%">
+        <button type="submit" mat-raised-button color="primary">{{ isNewBook ? 'Guardar' : 'Actualizar' }}</button>
+      </div>
     </div>
 
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Año de Publicación</mat-label>
-        <input matInput type="number" formControlName="year" required>
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Sinopsis</mat-label>
-        <textarea matInput formControlName="synopsis"></textarea>
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Número de Páginas</mat-label>
-        <input matInput type="number" formControlName="pages" required>
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Idioma</mat-label>
-        <input matInput formControlName="language" required>
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Disponibilidad</mat-label>
-        <input matInput formControlName="availability">
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>Palabras Clave</mat-label>
-        <input matInput formControlName="keywords">
-      </mat-form-field>
-    </div>
-
-    <div class="form-group">
-      <mat-form-field appearance="fill">
-        <mat-label>URL</mat-label>
-        <input matInput formControlName="url" pattern="https?://.+">
-        <mat-hint>Debe ser una URL válida</mat-hint>
-      </mat-form-field>
-    </div>
-
-    <button type="submit">{{ isNewBook ? 'Guardar' : 'Actualizar' }}</button>
   </form>
 </div>
